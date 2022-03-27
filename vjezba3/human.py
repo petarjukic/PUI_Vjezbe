@@ -7,7 +7,6 @@ class Human(Igrac):
         self.ime = ime
 
     def akcija(self, stanje_igre):
-        
         index_karte = int(input("Unesi broj izmedu 0 i 2 za izvuc kartu: "))
         while(index_karte > 2 or index_karte < 0):
             index_karte = int(input("Unesi broj izmedu 0 i 2 za izvuc kartu: "))

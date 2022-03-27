@@ -1,7 +1,5 @@
 from random import randint
 
-# from briskula import Briskula
-
 
 class Igrac:
     def __init__(self, ime):
