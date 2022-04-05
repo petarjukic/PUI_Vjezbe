@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     i = 0
     briskula = Briskula(igrac1, igrac2, {})
-    while(i < 1): # TRIBA BIT 100
+    while(i < 2): # TRIBA BIT 100
         # POLA PARTIJA IGRA PRVI A POLA DRUGI AGENT
         briskula.odigraj_partiju(False)
         i += 1

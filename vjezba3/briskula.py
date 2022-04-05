@@ -209,7 +209,7 @@ class IgracBriskule:
         self.protivnik_dobivene = protivnik_dobivene
 
     
-
+    
 if __name__ == "__main__":    
     igrac1 = human.Human("igrac1")
     igrac2 = igrac.Igrac("igrac2")
