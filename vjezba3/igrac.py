@@ -8,7 +8,7 @@ class Igrac:
     def akcija(self, stanje_igre):
         index_karte = randint(0, len(stanje_igre["ruka"] ) - 1)
         for key, value in stanje_igre.items():
-            if(key == "ruka"):
+            if(key == "ruka"): 
                 odabrana_karta = value[index_karte]
                 value.pop(index_karte)
                 return odabrana_karta

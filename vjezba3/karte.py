@@ -40,7 +40,7 @@ class Spil(Karte):
     def peskaj(self):
         return self.izvuci(0)    
 
-    
+
 if __name__ == "__main__":
     spil = Spil()
     print(spil)

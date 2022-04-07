@@ -2,7 +2,6 @@ from igrac import Igrac
 
 
 class Human(Igrac):
-    
     def __init__(self, ime):
         self.ime = ime
 

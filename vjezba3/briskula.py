@@ -26,11 +26,8 @@ class Briskula:
         self.stanje_igre1 = stanje_igre1
 
 
-    def __str__(self): 
-        # VIDIT KAKO IZBROJIT SPIL
-        velicina = 0
-
-        return "Broj karata je: " + str(velicina),\
+    def __str__(self):
+        return "Broj karata je: " + len(self.stanje_igre1["stol"].karte),\
             "\nIme igraca1: " + self.igrac1.ime + "\nIme igraca2: " + self.igrac2.ime, \
             "\nBriskula je: " + str(self.stanje_igre1["zog"]), \
             "\nKarte na stolu su: " + str(self.stanje_igre1["stol"]), \
@@ -47,45 +44,33 @@ class Briskula:
         if(human_karta.zog == zog.zog and comp_karta.zog == zog.zog):
             if((str(human_karta.broj) not in self.snaga) and (str(comp_karta.broj) not in self.snaga)):
                 if(human_karta.broj > comp_karta.broj):
-                    print(self.igrac1.ime, " karta je jaca ", human_karta.broj)
                     return True
                 else:
-                    print(self.igrac2.ime, " karta je jaca: ", comp_karta.broj)
                     return False  
             elif((str(human_karta.broj) in self.snaga) and (str(comp_karta.broj) not in self.snaga)):
-                print(self.igrac1.ime, " karta je jaca ", self.snaga[str(human_karta.broj)])
                 return True
             else:
-                print(self.igrac2.ime, " karta je jaca ", comp_karta)
                 return True
         elif(human_karta.zog != zog.zog and comp_karta.zog == zog.zog):
-            print(self.igrac2.ime, " karta je jaca ", comp_karta)
             return False
         elif(human_karta.zog == zog.zog and comp_karta.zog != zog.zog):
-            print(self.igrac1.ime, " karta je jaca ", human_karta)
             return True
         elif(human_karta.zog != zog.zog and comp_karta.zog != zog.zog):
             if(human_karta.zog == comp_karta.zog):
                 if(str(human_karta.broj) in self.snaga and str(comp_karta.broj) not in self.snaga):
-                    print(self.igrac1.ime, " ima jacu kartu")
                     return True
                 elif(str(human_karta.broj) not in self.snaga and str(comp_karta.broj) not in self.snaga):
                     return human_karta.broj > comp_karta.broj
                 elif(str(human_karta.broj) not in self.snaga and str(comp_karta.broj) in self.snaga):
-                    print(self.igrac2.ime, " ima jacu kartu ")
                     return False
                 if(self.snaga[str(human_karta.broj)] > self.snaga[str(comp_karta.broj)]):
-                    print(self.igrac1.ime, " ima jacu kartu")
                     return True
                 else:
-                    print(self.igrac2.ime, " ima jacu kartu")
                     return False
             else:
                 if(str(human_karta.broj) in self.snaga and str(comp_karta.broj) not in self.snaga):
-                    print(self.igrac1.ime, " ima jacu kartu")
                     return True
                 elif(str(human_karta.broj) not in self.snaga and str(comp_karta.broj) in self.snaga):
-                    print(self.igrac2.ime, " ima jacu kartu")
                     return False
                 else:
                     return human_karta.broj > comp_karta.broj
@@ -154,26 +139,19 @@ class Briskula:
             peska.append(human_karta)
             peska.append(comp_karta)
             if(self.provjera_jacine(human_karta, comp_karta, self.stanje_igre1["zog"])):
-                print(self.igrac1.ime, " ima jacu kartu")
                 self.stanje_igre1["dobivene"].extend(peska)
             else:
-                print(self.igrac2.ime, " ima jacu kartu")
                 self.stanje_igre1["dobivene_protivnik"].extend(peska)
 
 
         if(len(self.stanje_igre1["ruka"]) > 0):
             human_karta, comp_karta = self.odigraj_ruku(prikaz)
+            peska = []
+            peska.append(human_karta)
+            peska.append(comp_karta)
             if(self.provjera_jacine(human_karta, comp_karta, self.stanje_igre1["zog"])):
-                print(self.igrac1.ime, " ima jacu kartu")
-                peska = []
-                peska.append(human_karta)
-                peska.append(comp_karta)
                 self.stanje_igre1["dobivene"].extend(peska)
             else:
-                print(self.igrac2.ime, " ima jacu kartu")
-                peska = []
-                peska.append(human_karta)
-                peska.append(comp_karta)
                 self.stanje_igre1["dobivene_protivnik"].extend(peska)
 
         pobjednik = self.rezultat()
