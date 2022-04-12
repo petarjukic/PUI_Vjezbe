@@ -178,14 +178,6 @@ class Briskula:
             print(self.igrac2.ime, " u ruci za odigrat karta: ", comp_karta)
         
         return human_karta, comp_karta
-
-
-class IgracBriskule:
-    def __init__(self, ruka, dobivene, protivnik_dobivene):
-        self.ruka = ruka
-        self.dobivene = dobivene
-        self.protivnik_dobivene = protivnik_dobivene
-
     
     
 if __name__ == "__main__":    
