@@ -3,14 +3,14 @@ from copy import deepcopy
 
 
 class VOK:
-    def __init__(self, init_start="VOKB||----", init_end="----||VOKB"): # GOTOVO
+    def __init__(self, init_start="VOKB||----", init_end="----||VOKB"):
         self.board = [i for i in init_start]
         self.board_end = [i for i in init_end]
         self.board_start = deepcopy(self.board)
         self.stack = []
 
 
-    def __str__(self): # GOTOVO
+    def __str__(self):
         return str(self.board)
 
 
@@ -31,7 +31,7 @@ class VOK:
         return next_state_list
 
 
-    def next_states(self): # IN PROGRESS
+    def next_states(self):
         state_list = []
 
         for act in self.next_action():
@@ -40,40 +40,36 @@ class VOK:
             tmp.action(act)
             state_list.append(tmp)
         
-        # print("STATE LIST ", state_list)
-
         return state_list
 
 
-    def is_solved(self): # GOTOVO
+    def is_solved(self):
         return self.board == self.board_end
     
 
-    def is_terminal(self): # GOTOVO
+    def is_terminal(self):
         if ("V" in self.board[:4] and "O" in self.board[:4] and
             "B" not in self.board[:4]) or ("V" in self.board[-4:] and
             "O" in self.board[-4:] and "B" not in self.board[-4:]):
-            #print("Vuk pojeo ovcu")
             return True
+
         elif ("O" in self.board[:4] and "K" in self.board[:4] and 
             "B" not in self.board[:4]) or ("O" in self.board[-4:] and 
             "K" in self.board[-4:] and "B" not in self.board[-4:]):
-            #print("Ovca pojela kupus")   
             return True
+
         elif (self.board == self.board_end):
             return True
         
         return False
    
-    def undo_action(self, act): # GOTOVO
+    def undo_action(self, act):
 
         self.action(act)            
         return self.board
 
    
-    def action(self, act): # LEGALNE AKCIJE IN PROGRESS
-        # print("OVO JE ACTION ", act)
-        
+    def action(self, act):
         index = int(self.board.index(act))
         boat_index = int(self.board.index("B"))
         
@@ -90,7 +86,7 @@ class VOK:
         self.board[new_boat] = "B"
 
    
-    def copy(self): # GOTOVO
+    def copy(self):
         return deepcopy(self)
 
 
