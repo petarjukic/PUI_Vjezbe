@@ -30,12 +30,10 @@ def solution_dfs(vok):
     queue = [vok]
     rijecnik = {}
     rijecnik[str(vok)] = None
-    visited = set({}) # Set to keep track of visited nodes.
-    #RIJECNIK STRING, VRIJEDNOST STRING OD RODITELJA
+    visited = set({})
     
-    while(len(queue) > 0): #next_states
-        q_top = queue.pop(-1) #RODITELJ #bfs 0
-        #print(q_top)
+    while(len(queue) > 0):
+        q_top = queue.pop(-1) 
         
         if(q_top.is_terminal()):
             visited.add(q_top.__str__())
@@ -43,7 +41,7 @@ def solution_dfs(vok):
                 print("Ima rjesenje")
                 print("DUZINA VISITED ", len(visited))
                 dohvati(rijecnik, q_top)
-                return rijecnik
+                return
         
         elif(str(q_top) not in visited):
             visited.add(q_top.__str__())
@@ -53,19 +51,17 @@ def solution_dfs(vok):
                 queue.append(i)
     
     print("Nema rjesenja")
-    return rijecnik
+    return
 
 
 def solution_bfs(vok):
     queue = [vok]
     rijecnik = {}
     rijecnik[str(vok)] = None
-    visited = set({}) # Set to keep track of visited nodes.
-    #RIJECNIK STRING, VRIJEDNOST STRING OD RODITELJA
-    
-    while(len(queue) > 0): #next_states
-        q_top = queue.pop(0) #RODITELJ #bfs 0
-        #print(q_top)
+    visited = set({}) 
+
+    while(len(queue) > 0):
+        q_top = queue.pop(0) 
         
         if(q_top.is_terminal()):
             visited.add(q_top.__str__())
@@ -73,8 +69,7 @@ def solution_bfs(vok):
                 print("Ima rjesenje")
                 print("DUZINA VISITED ", len(visited))
                 dohvati(rijecnik, q_top)
-                
-                return rijecnik
+                return
         
         elif(str(q_top) not in visited):
             visited.add(q_top.__str__())
@@ -84,7 +79,7 @@ def solution_bfs(vok):
                 queue.append(i)
     
     print("Nema rjesenja")
-    return rijecnik
+    return
 
 
 def BestFS(vok):
@@ -103,7 +98,7 @@ def BestFS(vok):
                 print("Ima rjesenje")
                 print("DUZINA VISITED ", len(visited))
                 dohvati(rijecnik, q_top)
-                return rijecnik
+                return
         
         elif(str(q_top) not in visited):
             
@@ -114,7 +109,7 @@ def BestFS(vok):
                 queue.append(i)
     
     print("Nema rjesenja")
-    return rijecnik
+    return
 
 
 def heuristic(state):
@@ -130,21 +125,16 @@ def heuristic(state):
 
 if __name__ == "__main__":
     vokb = VOK()
-    print("Pocetno stanje ", vokb)
 
-    # print("OVO JE VELICINA PLOCE ", len(vokb.board_start))
     print("Generate: ")
     r = set({})
-    #generate(vokb, r)
+    generate(vokb, r)
     
-    #print(r)
-
-   # print("Solution dfs\n")
-    #print(solution_dfs(vokb))
+    print("Solution dfs\n")
     solution_dfs(vokb)
-    print("Solution bfs\n")
-    aa = solution_bfs(vokb)
 
-    # print("Solution BestFS\n")
-    # print(BestFS())
+    print("Solution bfs\n")
+    solution_bfs(vokb)
+
+    print("Solution BestFS\n")
     BestFS(vokb)
