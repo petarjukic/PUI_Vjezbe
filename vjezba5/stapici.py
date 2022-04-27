@@ -2,7 +2,6 @@ class Stapic:
     def __init__(self, init_number=11):
         self.floor = init_number
         self.player = "1"
-        self.dict = {self.player, self.floor}
 
 
     def __str__(self):
@@ -31,7 +30,7 @@ class Stapic:
             return True
         elif(self.floor < 2):
             return True
-            
+
         return False
 
 

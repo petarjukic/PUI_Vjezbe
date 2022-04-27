@@ -45,17 +45,24 @@ if __name__ == "__main__":
             num = int(input("Unsei broj stapica: "))
             while(not provjera(num)):
                 num = int(input("Unsei broj stapica: "))
-
+            
+            if(igra.floor < num):
+                break
+           
             igra.action(num)
-            igra.__str__()
+            print(igra)
             print("Broj stapica ", num)
             igra.change_player()
         else:
             comp_num = minimax(igra)
+            
+            if(igra.floor < comp_num):
+                break
+
             igra.action(comp_num)
             print("Broj stapica kod compa je: ", comp_num)
-            igra.__str__()
+            print(igra)
             igra.change_player()
 
-
+    igra.change_player()
     print("Pobjednik je ", igra.player)
