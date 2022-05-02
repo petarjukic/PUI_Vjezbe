@@ -4,12 +4,12 @@ from stapici import Stapic
 def minimax(igra):
     if(igra.is_terminal()):
         if(igra.player == "1"):
-            return 100
+            return 1000
         else:
-            return -100
+            return -1000
 
     if(igra.player == "1"):
-        max_num = 100
+        max_num = 1000
         for i in range(1, 3):
             igra.action(i)
             v = minimax(igra)
@@ -20,7 +20,7 @@ def minimax(igra):
         return max_num
     
     else:
-        min_num = -100
+        min_num = -1000
         for i in range(1, 3):
             igra.action(i)
             m = minimax(igra)
