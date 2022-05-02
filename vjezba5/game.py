@@ -32,7 +32,6 @@ def minimax(igra):
         return min_num
 
 
-
 def provjera(num):
     return num == 1 or num == 2
 
@@ -51,8 +50,6 @@ if __name__ == "__main__":
            
             igra.action(num)
             print(igra)
-            print("Broj stapica ", num)
-            igra.change_player()
         else:
             comp_num = minimax(igra)
             
@@ -60,9 +57,7 @@ if __name__ == "__main__":
                 break
 
             igra.action(comp_num)
-            print("Broj stapica kod compa je: ", comp_num)
             print(igra)
-            igra.change_player()
 
     igra.change_player()
     print("Pobjednik je ", igra.player)

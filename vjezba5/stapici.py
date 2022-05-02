@@ -5,7 +5,7 @@ class Stapic:
 
 
     def __str__(self):
-        return ("Na podu je: ", self.floor,",a sada je",self.player, "igrac")
+        return ("Na podu je: ", self.floor,", a sada je ",self.player, " igrac")
 
 
     def change_player(self):
@@ -26,9 +26,7 @@ class Stapic:
 
 
     def is_terminal(self):
-        if(self.is_solved()):
-            return True
-        elif(self.floor < 2):
+        if(self.is_solved() or self.floor < 2):
             return True
 
         return False
